@@ -61,15 +61,26 @@
 #include <esp_camera.h>
 #include <FS.h>
 #include <SPI.h>
-#include <SD.h>
+#include <SPIFFS.h>
+
+
 #include <Preferences.h>
 #include <Arduino.h>
-#include <ESP_Mail_Client.h>
-#include <SPIFFS.h>
-#include <WiFi.h>
 
-// Now support ArduinoJson 6.0.0+ ( tested with v6.14.1 )
-#include <ArduinoJson.h>      // get it from https://arduinojson.org/ or install via Arduino library manager
+// #ifdef MAILCLIENT
+// #include <SD.h>
+// #include <ESP_Mail_Client.h>
+// #include <WiFi.h>
+// // Now support ArduinoJson 6.0.0+ ( tested with v6.14.1 )
+// #include <ArduinoJson.h>      // get it from https://arduinojson.org/ or install via Arduino library manager
+// #else
+// #ifdef SDMMC
+// #include <SD_MMC.h>
+// #else
+// #include <SD.h>
+// #endif
+// #endif
+
 
 #include "config.h"
 #include "camera_pins.h"
@@ -103,10 +114,12 @@ uint16_t PIC_COUNT = 0;
 String filename = "";       // This holds the date string for the filename.
 String PHOTO_NAME[5];          // Holds the name of the photo to send. Actually want array of names of photos to send.... Max photos to send = 5
 
+#ifdef MAILCLIENT
 // The Email Sending data object contains config and data to send
 SMTPSession smtp;
 /* Callback function to get the Email sending status */
 void smtpCallback(SMTP_Status status);
+#endif
 
 
 void setup()
@@ -166,6 +179,8 @@ void setup()
   // Frees up GPIO13.
   switch_on_flash_LED();
 
+
+#ifdef MAILCLIENT
   if (!MailClient.sdBegin(14, 2, 15, 13))
   {
     // If we're here, there's a problem with the SD card.
@@ -175,9 +190,32 @@ void setup()
     // This checks the mode the unit is in and then goes to sleep accordingly
     check_mode_then_sleep();
   }
-
   // Query the card to make sure it's OK
   uint8_t SD_CARD = SD.cardType();
+#else
+#ifdef SDMMC
+  if (!SD_MMC.begin("/sdcard", true))
+#else
+  SPIClass spiSD = SPIClass(HSPI); // Neither HSPI nor VSPI seem to work
+  spiSD.begin(GPIO_NUM_14, GPIO_NUM_2, GPIO_NUM_15, GPIO_NUM_13);
+  if (!SD.begin(GPIO_NUM_13, spiSD))
+#endif 
+  {
+    // If we're here, there's a problem with the SD card.
+    DEBUGLN(settings_config.DEBUG_FLAG, "SD Card Mount Fail");
+    // We flash the LED to show an SD card error
+    flash_error(3); // Flash 3 times for an SD card mount error
+    // This checks the mode the unit is in and then goes to sleep accordingly
+    check_mode_then_sleep();
+  }
+  // Query the card to make sure it's OK
+#ifdef SDMMC
+  uint8_t SD_CARD = SD_MMC.cardType();
+#else
+  uint8_t SD_CARD = SD.cardType();
+#endif
+#endif
+
   DEBUG(settings_config.DEBUG_FLAG, "Card Type:");
 
   if (SD_CARD == CARD_NONE) {
@@ -202,7 +240,15 @@ void setup()
 
   // Here we read the settings file from the SD card.
   // This will change any default settings defined
+#ifdef MAILCLIENT
   readSettings(SD, SETTINGS_FILENAME, settings_config);
+#else
+#ifdef SDMMC
+  readSettings(SD_MMC, SETTINGS_FILENAME, settings_config);
+#else
+  readSettings(SD, SETTINGS_FILENAME, settings_config);
+#endif
+#endif
 
   // ************** START UP THE CAMERA ********************** //
   preferences.begin("trailcam", false); // Open nonvolatile storage (EEPROM) on the ESP in RW mode
@@ -227,7 +273,15 @@ void setup()
     }
     // If this happens want to write a line to the error log file.
     // If possible add the date/time to this log file.
+#ifdef MAILCLIENT
     fs::FS &fs = SD;
+#else
+#ifdef SDMMC
+    fs::FS &fs = SD_MMC;
+#else
+    fs::FS &fs = SD;
+#endif
+#endif
 
     // Now, create a new file using the path and name set above.
     File file = fs.open((String)ERROR_FILENAME, FILE_APPEND);
@@ -299,7 +353,15 @@ void loop()
       Serial.println(PHOTO_NAME[COUNTUP]);
     }
 
+#ifdef MAILCLIENT
     fs::FS &fs = SD;
+#else
+#ifdef SDMMC
+    fs::FS &fs = SD_MMC;
+#else
+    fs::FS &fs = SD;
+#endif
+#endif
 
     // Now, create a new file using the path and name set above.
     File file = fs.open(path.c_str(), FILE_WRITE);
@@ -337,6 +399,7 @@ void loop()
   // If there is data in the wifi SSID then try to connect to wifi.
   // Else we go to sleep
 
+#ifdef MAILCLIENT
   if (settings_config.WIFI_SSID.length() != 0)
   {
     // In this case we have an SSID so try to connect to WiFi
@@ -372,6 +435,7 @@ void loop()
       flash_error(1); // Show that we have sent the email OK
     }
   }
+#endif
   // This checks the mode the unit is in and then goes to sleep accordingly
   check_mode_then_sleep();
 }
@@ -427,6 +491,7 @@ void check_mode_then_sleep()
   }
 }
 
+#ifdef MAILCLIENT
 void sendPhoto( void )
 {
   // Preparing email
@@ -586,3 +651,4 @@ void smtpCallback(SMTP_Status status)
     //smtp.sendingResult.clear();
   }
 }
+#endif

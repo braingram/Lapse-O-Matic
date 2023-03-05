@@ -9,11 +9,11 @@
 
 // ***TO PROGRAM: Set Board to "AI Thinker ESP32-CAM"***
 // Select camera model
-//#define CAMERA_MODEL_WROVER_KIT
+#define CAMERA_MODEL_WROVER_KIT
 //#define CAMERA_MODEL_ESP_EYE
 //#define CAMERA_MODEL_M5STACK_PSRAM
 //#define CAMERA_MODEL_M5STACK_WIDE
-#define   CAMERA_MODEL_AI_THINKER
+//#define   CAMERA_MODEL_AI_THINKER
 
 //#define   IMAGE_QUALITY       10    // Set via SD card
 #define   IMAGE_SIZE          FRAMESIZE_UXGA
@@ -37,11 +37,19 @@
 #define   SETTINGS_FILENAME   "/settings.txt"
 #define   ERROR_FILENAME      "/error.txt"
 
+#if defined(CAMERA_MODEL_AI_THINKER)
 #define   LED_FLASH_PIN       GPIO_NUM_4           // GPIO pin for the flash LED
 #define   LED_ONBOARD         GPIO_NUM_33          // GPIO pin for the on-board LED
 #define   GPIO_PIN_WAKEUP     GPIO_NUM_13
 #define   I2C_SDA             GPIO_NUM_14
 #define   I2C_SCL             GPIO_NUM_15
+#elif defined(CAMERA_MODEL_WROVER_KIT)
+#define   LED_FLASH_PIN       GPIO_NUM_4           // GPIO pin for the flash LED
+#define   LED_ONBOARD         GPIO_NUM_33          // GPIO pin for the on-board LED
+#define   GPIO_PIN_WAKEUP     GPIO_NUM_32
+#define   I2C_SDA             -1
+#define   I2C_SCL             -1
+#endif
 
 #define   uS_TO_S_FACTOR      1000000ULL  /* Conversion factor for micro seconds to seconds */
 

@@ -1,2 +1,3 @@
 (sym_lib_table
+  (lib (name "Lapse_O_Matic_PCB-rescue")(type "Legacy")(uri "${KIPRJMOD}/Lapse_O_Matic_PCB-rescue.lib")(options "")(descr ""))
 )

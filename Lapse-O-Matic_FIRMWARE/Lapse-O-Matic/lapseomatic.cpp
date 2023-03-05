@@ -238,9 +238,10 @@ void configure_camera(camera_config_t &_config, settings &_settings_config)
   // Make sure there is PSRAM available (the AI-Thinker module has PSRAM). Otherwise, don't go any further.
   if (psramFound())
   {
+    _config.fb_location = CAMERA_FB_IN_PSRAM;
     _config.frame_size = IMAGE_SIZE;  // If there's PSRAM then there's enough memory to capture up to 1600x1200
     _config.jpeg_quality = _settings_config.IMAGE_QUALITY; // Valid: 0-63, with 0 being highest quality and largest file size.
-    _config.fb_count = 2;  // With the PSRAM, there's enough memory for two framebuffers, which speeds captures.
+    _config.fb_count = 1;  // With the PSRAM, there's enough memory for two framebuffers, which speeds captures.
   }
   else {
     // The AI-Thinker module has PSRAM, so should never arrive here.
