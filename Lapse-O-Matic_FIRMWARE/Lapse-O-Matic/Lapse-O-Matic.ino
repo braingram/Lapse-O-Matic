@@ -67,19 +67,21 @@
 #include <Preferences.h>
 #include <Arduino.h>
 
-// #ifdef MAILCLIENT
-// #include <SD.h>
-// #include <ESP_Mail_Client.h>
-// #include <WiFi.h>
-// // Now support ArduinoJson 6.0.0+ ( tested with v6.14.1 )
-// #include <ArduinoJson.h>      // get it from https://arduinojson.org/ or install via Arduino library manager
-// #else
-// #ifdef SDMMC
-// #include <SD_MMC.h>
-// #else
-// #include <SD.h>
-// #endif
-// #endif
+#define SDMMC
+
+#ifdef MAILCLIENT
+#include <SD.h>
+#include <ESP_Mail_Client.h>
+#include <WiFi.h>
+// Now support ArduinoJson 6.0.0+ ( tested with v6.14.1 )
+#include <ArduinoJson.h>      // get it from https://arduinojson.org/ or install via Arduino library manager
+#else
+#ifdef SDMMC
+#include <SD_MMC.h>
+#else
+#include <SD.h>
+#endif
+#endif
 
 
 #include "config.h"

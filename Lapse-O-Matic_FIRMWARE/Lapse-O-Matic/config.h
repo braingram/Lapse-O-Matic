@@ -16,7 +16,7 @@
 //#define   CAMERA_MODEL_AI_THINKER
 
 //#define   IMAGE_QUALITY       10    // Set via SD card
-#define   IMAGE_SIZE          FRAMESIZE_UXGA
+#define   IMAGE_SIZE          FRAMESIZE_QSXGA
     // The following resolutions are available:
     // 96x96 (96x96)
     // QQVGA (160x120)
@@ -31,6 +31,10 @@
     // XGA (1024x768)
     // SXGA (1280x1024)
     // UXGA (1600x1200) **Full-resolution for OV2640
+    // QHD (2560x1440)
+    // WQXGA (2560x1600)
+    // P_FHD (1080x1920)
+    // QSXGA (2560x1920) **Full-resolution for OV5640
 
 // ******** DEFAULT SETTINGS ARE ADDED HERE ********//
 
