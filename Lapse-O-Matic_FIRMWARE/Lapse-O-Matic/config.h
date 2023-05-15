@@ -9,14 +9,15 @@
 
 // ***TO PROGRAM: Set Board to "AI Thinker ESP32-CAM"***
 // Select camera model
-#define CAMERA_MODEL_WROVER_KIT
+//#define CAMERA_MODEL_WROVER_KIT
 //#define CAMERA_MODEL_ESP_EYE
 //#define CAMERA_MODEL_M5STACK_PSRAM
 //#define CAMERA_MODEL_M5STACK_WIDE
-//#define   CAMERA_MODEL_AI_THINKER
+#define   CAMERA_MODEL_AI_THINKER
 
 //#define   IMAGE_QUALITY       10    // Set via SD card
 #define   IMAGE_SIZE          FRAMESIZE_QSXGA
+//#define   IMAGE_SIZE          FRAMESIZE_UXGA
     // The following resolutions are available:
     // 96x96 (96x96)
     // QQVGA (160x120)

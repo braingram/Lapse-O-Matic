@@ -67,7 +67,7 @@
 #include <Preferences.h>
 #include <Arduino.h>
 
-#define SDMMC
+//#define SDMMC
 
 #ifdef MAILCLIENT
 #include <SD.h>
