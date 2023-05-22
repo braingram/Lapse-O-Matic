@@ -68,7 +68,7 @@
 #include <Preferences.h>
 #include <Arduino.h>
 
-//#define SDMMC
+#define SDMMC
 
 #ifdef SDMMC
 #include <SD_MMC.h>
@@ -112,6 +112,8 @@ String PHOTO_NAME[5];          // Holds the name of the photo to send. Actually 
 
 void setup()
 {
+  // disable wakeup pin to allow it to be used
+  rtc_gpio_deinit(GPIO_NUM_13);
   WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);  //disable brownout detector
   Serial.begin(115200);
   //Print the wakeup reason for ESP32
@@ -170,7 +172,11 @@ void setup()
 
 
 #ifdef SDMMC
-  if (!SD_MMC.begin("/sdcard", true))
+  // clk, cmd, d0
+  pinMode(GPIO_NUM_13, OUTPUT);
+  digitalWrite(GPIO_NUM_13, HIGH);
+  SD_MMC.setPins(GPIO_NUM_14, GPIO_NUM_15, GPIO_NUM_2); 
+  if (!SD_MMC.begin("/sdcard", true, false, 10000))
 #else
   SPIClass spiSD = SPIClass(HSPI); // Neither HSPI nor VSPI seem to work
   spiSD.begin(GPIO_NUM_14, GPIO_NUM_2, GPIO_NUM_15, GPIO_NUM_13);

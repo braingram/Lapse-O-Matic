@@ -102,12 +102,22 @@ are used for the external 3.3 volt regulator:
 The ESP32 can be programmed in-circuit using a FTDI cable. Note that this
 cable must have 3.3 volt signaling and 5 volt VCC (like this one
 [from Sparkfun](https://www.sparkfun.com/products/9717)). To program
-the ESP32 you must
+the ESP32 you can either:
 
 - remove power
 - bridge the 2 programming pins (J5)
 - reapply power
 - upload your sketch
+- remove the bridge of the programming pins
+- re-power the esp32
+
+or instead of removing power:
+
+- bridge the programming pins
+- press the small reset button on the back of the ESP32
+- upload your sketch
+- remove the bridge of the programming pins
+- press the esp32 reset button
 
 If using the standard FTDI cable (with a female socket) you will want to
 install 0.1 inch male header pins on:
