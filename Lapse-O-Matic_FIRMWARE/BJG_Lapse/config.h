@@ -16,8 +16,7 @@
 #define   CAMERA_MODEL_AI_THINKER
 
 //#define   IMAGE_QUALITY       10    // Set via SD card
-#define   IMAGE_SIZE          FRAMESIZE_QQVGA
-//#define   IMAGE_SIZE          FRAMESIZE_QSXGA
+#define   IMAGE_SIZE          FRAMESIZE_QSXGA
 //#define   IMAGE_SIZE          FRAMESIZE_UXGA
     // The following resolutions are available:
     // 96x96 (96x96)

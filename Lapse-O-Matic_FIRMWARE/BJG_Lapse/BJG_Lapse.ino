@@ -176,7 +176,7 @@ void setup()
   pinMode(GPIO_NUM_13, OUTPUT);
   digitalWrite(GPIO_NUM_13, HIGH);
   SD_MMC.setPins(GPIO_NUM_14, GPIO_NUM_15, GPIO_NUM_2); 
-  if (!SD_MMC.begin("/sdcard", true, false, 10000))
+  if (!SD_MMC.begin("/sdcard", true))
 #else
   SPIClass spiSD = SPIClass(HSPI); // Neither HSPI nor VSPI seem to work
   spiSD.begin(GPIO_NUM_14, GPIO_NUM_2, GPIO_NUM_15, GPIO_NUM_13);
