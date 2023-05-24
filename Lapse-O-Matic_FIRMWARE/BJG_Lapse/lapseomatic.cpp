@@ -5,11 +5,26 @@
 #include "driver/rtc_io.h"
 #include "camera_pins.h"
 
-void set_led(int led, int state)
+void flash_on()
 {
-  pinMode(led, OUTPUT);
-  digitalWrite(led, state);
-  rtc_gpio_hold_en((gpio_num_t)led);
+  pinMode(LED_FLASH, OUTPUT);
+  digitalWrite(LED_FLASH, HIGH);
+}
+
+void flash_off()
+{
+  pinMode(LED_FLASH, OUTPUT);
+  digitalWrite(LED_FLASH, LOW);
+}
+
+void latch_flash()
+{
+  rtc_gpio_hold_en(GPIO_NUM_4);
+}
+
+void unlatch_flash()
+{
+  rtc_gpio_hold_dis(GPIO_NUM_4);
 }
 
 void flash_error(int _flash_number)

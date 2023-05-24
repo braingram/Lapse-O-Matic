@@ -7,7 +7,10 @@
 // This holds the various subroutines for the wifie camera to use
 // This makes main code easier to read.
 
-void set_led(int led, int state);
+void flash_on();
+void flash_off();
+void latch_flash();
+void unlatch_flash();
 void flash_error(int my_flash_number);
 void print_wakeup_reason();
 

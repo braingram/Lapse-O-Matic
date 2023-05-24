@@ -119,7 +119,8 @@ void setup()
   //Print the wakeup reason for ESP32
   print_wakeup_reason();
   DEBUGLN(settings_config.DEBUG_FLAG, "Starting");
-  set_led(LED_FLASH, LOW); // Ensure LED is OFF to start
+  unlatch_flash();
+  flash_off();
 
   bool rtc_flag = true;
 
@@ -167,8 +168,6 @@ void setup()
   // *************** SORT OUT THE SD CARD ****************************** //
   // Start up the SD card, using 1-bit xfers instead of 4-bit (set the "true" option).
   // Frees up GPIO13.
- 
-  set_led(LED_FLASH, HIGH);  // BJG why? 
 
 
 #ifdef SDMMC
@@ -290,7 +289,7 @@ void loop()
     // Take number_photos pictures before shutting down.
     if (settings_config.FLASH_FLAG == true)
     {
-      set_led(LED_FLASH, HIGH);
+      flash_on();
       delay(settings_config.FLASH_START_DELAY);
     }
     // Take picture and read the frame buffer
@@ -299,7 +298,7 @@ void loop()
     if (settings_config.FLASH_FLAG == true)
     {
       delay(settings_config.FLASH_STOP_DELAY);
-      set_led(LED_FLASH, LOW);
+      flash_off();
     }
     if (!fb)
     {
@@ -373,7 +372,8 @@ void loop()
 
 void enable_sleep()
 {
-  set_led(LED_FLASH, LOW);
+  flash_off();
+  latch_flash();
   delay(50);
   //   Now go to sleep:
   esp_sleep_enable_timer_wakeup(settings_config.TIME_TO_SLEEP * uS_TO_S_FACTOR);
@@ -386,7 +386,8 @@ void enable_sleep()
 
 void enable_trigger()
 {
-  set_led(LED_FLASH, LOW);
+  flash_off();
+  latch_flash();
   delay(50);
   //   Now go to sleep:
   esp_sleep_enable_ext0_wakeup(GPIO_PIN_WAKEUP, 0);
