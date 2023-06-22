@@ -15,7 +15,7 @@
    version="1.1"
    id="svg7657"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="bluevane_camer_trap.svg">
+   sodipodi:docname="tube_trap_frame.svg">
   <defs
      id="defs7651" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="483.79398"
-     inkscape:cy="375.75192"
+     inkscape:zoom="1.4"
+     inkscape:cx="498.19234"
+     inkscape:cy="324.96704"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -313,43 +313,15 @@
        id="rect973"
        inkscape:connector-curvature="0" />
     <rect
-       y="168.06651"
+       y="146.37097"
        x="88.282784"
        height="63.294739"
        width="101.39474"
        id="rect1040"
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <ellipse
-       ry="1.4630834"
-       rx="1.4630833"
-       cy="182.26387"
-       cx="176.43016"
-       id="ellipse1044"
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <ellipse
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="ellipse1048"
-       cx="176.43016"
-       cy="217.16389"
-       rx="1.4630833"
-       ry="1.4630834" />
-    <ellipse
-       ry="1.4630834"
-       rx="1.4630833"
-       cy="217.16389"
-       cx="101.53015"
-       id="ellipse1050"
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <ellipse
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="ellipse1052"
-       cx="101.53015"
-       cy="182.26387"
-       rx="1.4630833"
-       ry="1.4630834" />
     <g
        id="g1072"
-       transform="translate(56.756725,-63.632612)"
+       transform="translate(56.756725,-85.328459)"
        style="stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none">
       <g
          transform="translate(-17.589498,25.527064)"
@@ -406,7 +378,7 @@
       </g>
     </g>
     <rect
-       y="210.82805"
+       y="189.13251"
        x="92.994324"
        height="15.871667"
        width="3.0716672"
@@ -418,16 +390,16 @@
        width="3.0716672"
        height="15.871667"
        x="181.89433"
-       y="210.82805" />
+       y="189.13251" />
     <rect
        style="fill:#000002;fill-opacity:0.00392157;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1078"
        width="3.0716672"
        height="15.871667"
        x="92.994324"
-       y="172.72804" />
+       y="151.0325" />
     <rect
-       y="172.72804"
+       y="151.0325"
        x="181.89433"
        height="15.871667"
        width="3.0716672"
@@ -444,16 +416,68 @@
          x="179.82217"
          y="71.537201"
          style="stroke-width:0.26458332">2x</tspan></text>
-    <text
-       id="text1092"
-       y="165.65327"
-       x="191.63393"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="165.65327"
-         x="191.63393"
-         id="tspan1090"
-         sodipodi:role="line">2x</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1001"
+       width="101.39474"
+       height="63.294739"
+       x="88.282784"
+       y="222.75948" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="ellipse1003"
+       cx="176.43016"
+       cy="236.76784"
+       rx="1.4630833"
+       ry="1.4630834" />
+    <ellipse
+       ry="1.4630834"
+       rx="1.4630833"
+       cy="271.66782"
+       cx="176.43016"
+       id="ellipse1005"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="ellipse1007"
+       cx="101.53015"
+       cy="271.66782"
+       rx="1.4630833"
+       ry="1.4630834" />
+    <ellipse
+       ry="1.4630834"
+       rx="1.4630833"
+       cy="236.76784"
+       cx="101.53015"
+       id="ellipse1009"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="fill:#000002;fill-opacity:0.00392157;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1031"
+       width="3.0716672"
+       height="15.871667"
+       x="92.994324"
+       y="265.332" />
+    <rect
+       y="265.332"
+       x="181.89433"
+       height="15.871667"
+       width="3.0716672"
+       id="rect1033"
+       style="fill:#000002;fill-opacity:0.00392157;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       y="227.23201"
+       x="92.994324"
+       height="15.871667"
+       width="3.0716672"
+       id="rect1035"
+       style="fill:#000002;fill-opacity:0.00392157;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="fill:#000002;fill-opacity:0.00392157;stroke:#000000;stroke-width:0.131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1037"
+       width="3.0716672"
+       height="15.871667"
+       x="181.89433"
+       y="227.23201" />
   </g>
 </svg>
